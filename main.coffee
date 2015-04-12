@@ -6,10 +6,9 @@ height = 10 * window.innerHeight / window.innerWidth
 camera = new THREE.OrthographicCamera( width / - 2, width / 2, height / 2, height / - 2, 1, 1000 )
 
 controls = new THREE.TrackballControls( camera )
-controls.rotateSpeed = 5
+controls.rotateSpeed = 3
 controls.noZoom = true
 controls.noPan = true
-controls.dynamicDampingFactor = 0.1
 
 camera.position.x = 10
 camera.position.y = 10

@@ -13,13 +13,11 @@ camera = new THREE.OrthographicCamera(width / -2, width / 2, height / 2, height 
 
 controls = new THREE.TrackballControls(camera);
 
-controls.rotateSpeed = 5;
+controls.rotateSpeed = 3;
 
 controls.noZoom = true;
 
 controls.noPan = true;
-
-controls.dynamicDampingFactor = 0.1;
 
 camera.position.x = 10;
 
