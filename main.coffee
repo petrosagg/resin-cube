@@ -7,7 +7,7 @@ camera = new THREE.OrthographicCamera( width / - 2, width / 2, height / 2, heigh
 
 controls = new THREE.TrackballControls( camera )
 controls.rotateSpeed = 5
-# controls.noZoom = false
+controls.noZoom = true
 controls.noPan = true
 controls.dynamicDampingFactor = 0.1
 

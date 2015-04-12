@@ -15,6 +15,8 @@ controls = new THREE.TrackballControls(camera);
 
 controls.rotateSpeed = 5;
 
+controls.noZoom = true;
+
 controls.noPan = true;
 
 controls.dynamicDampingFactor = 0.1;
