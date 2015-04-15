@@ -18,24 +18,31 @@ renderer = new THREE.WebGLRenderer()
 renderer.setSize(window.innerWidth, window.innerHeight)
 document.body.appendChild(renderer.domElement)
 
-
-createCube = (size) ->
-	geometry = new THREE.BoxGeometry(size, size, size)
+createCube = (size, r = 0, divs = 1) ->
+	divs2 = divs * divs
+	geometry = new THREE.BoxGeometry(size, size, size, divs, divs, divs)
 	x_color = 0xf7c30f
 	y_color = 0xe0a800
 	z_color = 0xffec52
 
 	for face, i in geometry.faces
 		switch
-			when 0 <= i < 4
+			when 0 * divs2 <= i < 4 * divs2
 				face.color.setHex(x_color)
-			when 4 <= i < 8
+			when 4 * divs2 <= i < 8 * divs2
 				face.color.setHex(y_color)
-			when 8 <= i < 12
+			when 8 * divs2 <= i < 12 * divs2
 				face.color.setHex(z_color)
-	material = new THREE.MeshBasicMaterial( { color: 0xffffff, vertexColors: THREE.FaceColors })
-	cube = new THREE.Mesh(geometry, material)
-	return cube
+
+	geometry.vertices[0].x -= size * r
+	geometry.vertices[0].y -= size * r
+	geometry.vertices[0].z -= size * r
+
+	material = new THREE.MeshLambertMaterial( { color: 0xffffff, vertexColors: THREE.FaceColors } )
+	return new THREE.Mesh(geometry, material)
+
+light = new THREE.AmbientLight(0xffffff)
+scene.add(light)
 
 scene.add(createCube(1))
 
